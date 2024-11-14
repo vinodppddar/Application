@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <link rel="stylesheet" href="styles.css">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fefbfb;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #edf4ef;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #d2691e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+.summary {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+.summary h2 {
+    text-align: center;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Application Form</h1>
+        <form id="jobApplicationForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" required></textarea>
+
+            <label for="skills">Skills:</label>
+            <textarea id="skills" required></textarea>
+
+            <label for="education10th">10th CGPA:</label>
+            <input type="text" id="education10th" required>
+
+            <label for="education12th">12th CGPA:</label>
+            <input type="text" id="education12th" required>
+
+            <label for="degree">Degree:</label>
+            <input type="text" id="degree" required>
+
+            <label for="experience">Experience (in years):</label>
+            <input type="number" id="experience" required>
+
+            <label for="resume">Upload Resume:</label>
+            <input type="file" id="resume" accept=".pdf,.doc,.docx" required>
+
+            <button type="submit">Submit Application</button>
+        </form>
+
+        <!-- Section to display the form data summary -->
+        <div id="summary" class="summary" style="display:none;">
+            <h2>Application Summary</h2>
+            <p><strong>First Name:</strong> <span id="summaryFirstName"></span></p>
+            <p><strong>Last Name:</strong> <span id="summaryLastName"></span></p>
+            <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+            <p><strong>Phone Number:</strong> <span id="summaryPhone"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="summaryDOB"></span></p>
+            <p><strong>Address:</strong> <span id="summaryAddress"></span></p>
+            <p><strong>Skills:</strong> <span id="summarySkills"></span></p>
+            <p><strong>10th CGPA:</strong> <span id="summaryEducation10th"></span></p>
+            <p><strong>12th CGPA:</strong> <span id="summaryEducation12th"></span></p>
+            <p><strong>Degree:</strong> <span id="summaryDegree"></span></p>
+            <p><strong>Experience (in years):</strong> <span id="summaryExperience"></span></p>
+            <p><strong>Resume Uploaded:</strong> <span id="summaryResume"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('jobApplicationForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            // Get form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                dob: document.getElementById('dob').value,
+                address: document.getElementById('address').value,
+                skills: document.getElementById('skills').value,
+                education10th: document.getElementById('education10th').value,
+                education12th: document.getElementById('education12th').value,
+                degree: document.getElementById('degree').value,
+                experience: document.getElementById('experience').value,
+                resume: document.getElementById('resume').files[0] ? document.getElementById('resume').files[0].name : 'No file uploaded',
+            };
+
+            // Display form data in the summary section
+            document.getElementById('summaryFirstName').textContent = formData.firstName;
+            document.getElementById('summaryLastName').textContent = formData.lastName;
+            document.getElementById('summaryEmail').textContent = formData.email;
+            document.getElementById('summaryPhone').textContent = formData.phone;
+            document.getElementById('summaryDOB').textContent = formData.dob;
+            document.getElementById('summaryAddress').textContent = formData.address;
+            document.getElementById('summarySkills').textContent = formData.skills;
+            document.getElementById('summaryEducation10th').textContent = formData.education10th;
+            document.getElementById('summaryEducation12th').textContent = formData.education12th;
+            document.getElementById('summaryDegree').textContent = formData.degree;
+            document.getElementById('summaryExperience').textContent = formData.experience;
+            document.getElementById('summaryResume').textContent = formData.resume;
+
+            // Show the summary section
+            document.getElementById('summary').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
